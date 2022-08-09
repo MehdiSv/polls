@@ -70,7 +70,14 @@ const App = (props) => {
               }
             />
 
-            <Route path="*" element={<PageNotFound />} />
+            <Route
+              path="*"
+              element={
+                <RequireAuth>
+                  <PageNotFound />
+                </RequireAuth>
+              }
+            />
           </Routes>
         )}
       </div>

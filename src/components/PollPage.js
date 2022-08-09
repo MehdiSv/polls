@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { handleAnswerPoll } from "../actions/polls";
+import { useEffect } from "react";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -14,6 +15,14 @@ const withRouter = (Component) => {
 };
 
 const PollPage = ({ poll, users, authedUser, dispatch }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (poll === undefined) {
+      navigate("/poll_not_found");
+    }
+  }, []);
+
   const pollAnswered = () => {
     return poll.id in users[authedUser].answers;
   };
@@ -44,7 +53,7 @@ const PollPage = ({ poll, users, authedUser, dispatch }) => {
     );
   };
 
-  return (
+  return poll === undefined ? null : (
     <div className="center">
       <div>
         <img

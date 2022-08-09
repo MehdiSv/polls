@@ -1,8 +1,15 @@
 import { connect } from "react-redux";
 import { Navigate } from "react-router";
+import { useLocation } from "react-router-dom";
 
 const RequireAuth = ({ authedUser, children }) => {
-  return authedUser === null ? <Navigate to="/login" replace /> : children;
+  const location = useLocation();
+
+  return authedUser === null ? (
+    <Navigate to="/login" replace state={{ path: location.pathname }} />
+  ) : (
+    children
+  );
 };
 
 const mapStatetoProps = ({ authedUser }, { children }) => {

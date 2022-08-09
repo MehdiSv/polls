@@ -2,8 +2,10 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Login = ({ users, dispatch }) => {
+  const { state } = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -12,7 +14,7 @@ const Login = ({ users, dispatch }) => {
     if (user in users) {
       setError("");
       dispatch(setAuthedUser(user));
-      navigate("/");
+      navigate(state?.path || "/");
       return;
     }
 
