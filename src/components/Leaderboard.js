@@ -21,7 +21,14 @@ const Leaderboard = ({ users }) => {
           </tr>
           {usersRanked().map((user) => (
             <tr key={users[user].id}>
-              <th>{users[user].name}</th>
+              <th>
+                {users[user].name}
+                <img
+                  src={users[user].avatarURL}
+                  alt={`Avatar of ${users[user].name}`}
+                  className="avatar"
+                />
+              </th>
               <th>{Object.keys(users[user].answers).length}</th>
               <th>{users[user].questions.length}</th>
             </tr>

@@ -11,6 +11,7 @@ import Nav from "./Nav";
 import Logout from "./Logout";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
+import PageNotFound from "./PageNotFound";
 
 const App = (props) => {
   useEffect(() => {
@@ -68,6 +69,8 @@ const App = (props) => {
                 </RequireAuth>
               }
             />
+
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         )}
       </div>

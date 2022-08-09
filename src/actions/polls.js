@@ -51,6 +51,7 @@ export function handleNewPoll(poll) {
 
     return saveQuestion(poll)
       .then((savedPoll) => {
+        console.log("**", savedPoll);
         dispatch(hideLoading());
         dispatch(newPoll(savedPoll));
       })

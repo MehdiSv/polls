@@ -17,10 +17,14 @@ const Nav = ({ users, authedUser }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/leaderboard">Leaderboard</Link>
+          <Link data-testid="leaderbord-link" to="/leaderboard">
+            Leaderboard
+          </Link>
         </li>
         <li>
-          <Link to="/add">New</Link>
+          <Link data-testid="add-poll-link" to="/add">
+            New
+          </Link>
         </li>
         <li>
           <Link to="/logout">Logout</Link>
